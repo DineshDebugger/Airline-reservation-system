@@ -1,34 +1,54 @@
 body {
-    background: url('./status.jpg');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+  background: url("./status.jpg");
+  /* background-image: url("../src/assets/flight1.jpg"); */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
 }
 
-.page{
-    position: absolute;
+.hero-banner {
+  background-image: url("../src/assets/logo1.jpg"); /* or replace with: url('./logo.png') */
+  height: 120px; /* Adjusted for professional logo height */
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 20px auto; /* Center horizontally */
+  display: block;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 
-.fade-appear, .fade-enter {
-    opacity: 0;
-    z-index: 1;
+.page {
+  position: absolute;
 }
 
-.fade-appear-active, .fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 300ms linear 150ms;
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
 }
 
-.fade-exit{
-    opacity: 1;
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
 }
 
-.fade-exit.fade-exit-active{
-    opacity: 1;
-    transition: opacity 150ms linear;
+.fade-exit {
+  opacity: 1;
+}
 
+.fade-exit.fade-exit-active {
+  opacity: 1;
+  transition: opacity 150ms linear;
 }
