@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaAngleDoubleDown } from "react-icons/fa";
 import './Tab.css'
-export default function SeatSelection() {
+export default function SeatSelection({ onSeatSelectionComplete }) {
     const [name, setName] = useState([])
     const [arrowDown, setArrowDown] = useState(false)
     const [gender, setGender] = useState([])
@@ -62,24 +62,63 @@ export default function SeatSelection() {
         localStorage.setItem("nameData", JSON.stringify(name))
         console.log(name)
         console.log(gender)
+        // Call the seat selection completion callback
+        if (onSeatSelectionComplete) {
+            onSeatSelectionComplete()
+        }
     }
 
     const renderPassengerData = (seatArray) => {
         return seatArray.map((seat, idx) => {
             return (
                 <form key={idx} className="form seatfrm">
-                    <p class="text-capitalize text-center">Seat No:{seat}</p>
-                    <input className="form-control seatInp" onBlur={e => handlePassengerName(e, seat)} type="text" name="passenger-name" placeholder="Enter Name" />
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="male" value="Male" onClick={e => handleGender(e, seat)} />
-                        <label class="form-check-label" for="male">Male</label>
+                    <h5 className="text-center mb-3" style={{color: '#333', fontWeight: 'bold'}}>Seat No: {seat}</h5>
+                    <div className="mb-3">
+                        <input
+                            style={{ marginLeft: '8px' }}
+                            className="form-control seatInp"
+                            onBlur={e => handlePassengerName(e, seat)}
+                            type="text"
+                            name="passenger-name"
+                            placeholder="Enter Passenger Name"
+                            required
+                        />
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="female" value="Female" onClick={e => handleGender(e, seat)} />
-                        <label class="form-check-label" htmlFor="female">Female</label>
+                    <div className="mb-3">
+                        <div style={{fontWeight: 'bold', color: '#555', marginBottom: '10px', textAlign: 'center'}}>Gender:</div>
+                        <div className="d-flex justify-content-center">
+                            <div className="form-check me-3">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name={`gender-${seat}`}
+                                    id={`male-${seat}`}
+                                    value="Male"
+                                    onClick={e => handleGender(e, seat)}
+                                    style={{width: '16px', height: '16px', marginRight: '8px'}}
+                                />
+                                <label className="form-check-label" htmlFor={`male-${seat}`} style={{marginTop: '31px', fontSize: '14px', color: '#333', cursor: 'pointer', fontWeight: '500'}}>
+                                    Male
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    className="form-check-input"
+                                    type="radio"
+                                    name={`gender-${seat}`}
+                                    id={`female-${seat}`}
+                                    value="Female"
+                                    onClick={e => handleGender(e, seat)}
+                                    style={{width: '16px', height: '16px', marginRight: '8px'}}
+                                />
+                                <label className="form-check-label" htmlFor={`female-${seat}`} style={{marginTop: '31px', fontSize: '14px', color: '#333', cursor: 'pointer', fontWeight: '500'}}>
+                                    Female
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                </form>)
-
+                </form>
+            )
         })
     }
     return (

@@ -62,6 +62,10 @@ export default class App extends React.Component {
 
     this.setState({ formData });
     this.form.reset();
+    // Call the payment completion callback
+    if (this.props.onPaymentComplete) {
+      this.props.onPaymentComplete();
+    }
   };
 
   moveToTicketPage = (e) => {

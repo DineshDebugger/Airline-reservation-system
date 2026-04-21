@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./busList.css";
-export default function BusList({ value: dataInp }) {
+export default function BusList({ value: dataInp, onBookingComplete }) {
   const [obj, setObj] = useState("");
   const [reset, Setreset] = useState(false);
   const [arrowDown, setArrowDown] = useState(false);
@@ -15,6 +15,10 @@ export default function BusList({ value: dataInp }) {
     localStorage.setItem("selectedBusId", bId);
     SetClas(false);
     setArrowDown(true);
+    // Call the booking completion callback
+    if (onBookingComplete) {
+      onBookingComplete();
+    }
   };
 
   const handleReset = (e) => {
@@ -54,14 +58,11 @@ export default function BusList({ value: dataInp }) {
                 Book Now
               </button>
             </div>
-            <div class="col-6 col-sm-4 mb-2 ml-0">
-              <span
-                className={reset ? "badge badge-danger ml-5" : "disabled"}
-                onClick={(e) => handleReset(e)}
-              >
+            {/* <div class="col-6 col-sm-4 mb-2 ml-0">
+              <span className={reset ? "badge badge-danger ml-5" : "disabled"} onClick={(e) => handleReset(e)}>
                 Reset
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       );

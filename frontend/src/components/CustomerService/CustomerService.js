@@ -1,112 +1,182 @@
 import React, { useState } from "react";
-import { FaAngleDoubleDown } from "react-icons/fa";
-
+import { FaStar, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import "./customerservice.css";
-export default class App extends React.Component {
-  moveToCusPage = (e) => {
+
+export default class CustomerService extends React.Component {
+  state = {
+    name: "",
+    email: "",
+    feedback: "",
+    rating: 0,
+    hoverRating: 0,
+    formSubmitted: false
+  };
+
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleRatingChange = (value) => {
+    this.setState({ rating: value });
+  };
+
+  handleSubmit = (e) => {
     e.preventDefault();
-    window.location.href = "/ServicePage";
+    if (this.state.name && this.state.email && this.state.feedback) {
+      this.setState({ formSubmitted: true });
+      setTimeout(() => {
+        this.form.reset();
+        this.setState({
+          name: "",
+          email: "",
+          feedback: "",
+          rating: 0,
+          formSubmitted: false
+        });
+      }, 3000);
+    }
   };
 
   render() {
+    const { name, email, feedback, rating, hoverRating, formSubmitted } = this.state;
+
     return (
-      <div className="row">
-        <div className="column3">
-          <div className="seatInfo">
-            <p class="new">Dinesh AIRLINES</p>
-            <center>
-              <div className="cen">
-                <form>
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <label className="t">Name: &nbsp;&nbsp;&nbsp;</label>
-                  <input type="text" name="name" id="d" required />
-                  <br />
-                  <label className="t">Email-Id : &nbsp;&nbsp;&nbsp;</label>
-                  <input type="email" name="usr_email" id="d" required />
-                  <br />
-                  <br />
-                  <a href>
-                    <label className="bo">FEEDBACK</label> <br></br>
-                  </a>
-                  <textarea name="message"></textarea>
-                  <br />
-                  <br />
-                  <p className="ne">RATING</p>
-                  <center>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="rating"
-                        id="1"
-                        value="1"
-                        className="cen"
-                      />
-                      <label class="form-check-label" htmlfor="male">
-                        1
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="rating" id="2" value="2" />
-                      <label class="form-check-label" htmlFor="female">
-                        2
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="rating" id="3" value="3" />
-                      <label class="form-check-label" htmlFor="female">
-                        3
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="rating" id="4" value="4" />
-                      <label class="form-check-label" htmlFor="female">
-                        4
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="rating" id="5" value="5" />
-                      <label class="form-check-label" htmlFor="female">
-                        5
-                      </label>
-                    </div>
-                  </center>
-                  <br />
-                  <br />
-                  <button
-                    type="submit"
-                    className="myform-btn"
-                    class="bt"
-                    onClick={(e) => this.moveToCusPage(e)}
-                  >
-                    <center>submit</center>
-                  </button>{" "}
-                  &nbsp;&nbsp;
-                  <button type="reset" className="myform-btn" class="bt1" value="clear">
-                    <center>clear</center>
-                  </button>
-                </form>
+      <div className="customer-service-container">
+        {/* Header */}
+        <div className="cs-header">
+          <h1>Customer Service</h1>
+          <p>We'd love to hear from you! Send us your feedback.</p>
+        </div>
+
+        <div className="cs-content">
+          {/* Feedback Form Card */}
+          <div className="cs-form-card">
+            <h2>Send Feedback</h2>
+            <form ref={(form) => (this.form = form)} onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                {/* <label htmlFor="name">Full Name</label> */}
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={this.handleInputChange}
+                  required
+                />
               </div>
-              <br />
-              <br />
 
-              <br />
-              <center>
-                <br />
-                <p class="te">EMAIL: swadesiairlines@gmail.com</p>
-                <p class="te">CONTACT NUMBER: 9677934637</p>
-                <p class="te">ADDRESS:91-Z/19,DELHI,110001 </p>
-              </center>
-            </center>
-            <br />
-            <br />
-            <p className="bo">If you need any information send mail</p>
+              <div className="form-group">
+                {/* <label htmlFor="email">Email Address</label> */}
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
 
-            <a href="mailto:harishramaraj13@gmail.com" className="bo">
-              Report via mail
-            </a>
-            <br></br>
+              <div className="form-group">
+                <label htmlFor="feedback">Your Feedback</label>
+                <textarea
+                  id="feedback"
+                  name="feedback"
+                  placeholder="Tell us what you think about our service..."
+                  value={feedback}
+                  onChange={this.handleInputChange}
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+
+              <div className="form-group">
+                <label style={{ marginTop: '24px' }}>Rate Your Experience</label>
+                <div className="star-rating">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      className="star"
+                      onClick={() => this.handleRatingChange(star)}
+                      onMouseEnter={() => this.setState({ hoverRating: star })}
+                      onMouseLeave={() => this.setState({ hoverRating: 0 })}
+                      style={{
+                        color:
+                          (hoverRating || rating) >= star
+                            ? "#FFD700"
+                            : "#ddd",
+                        cursor: "pointer",
+                        fontSize: "28px",
+                        marginRight: "10px"
+                      }}
+                    >
+                      <FaStar />
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="form-buttons">
+                <button type="submit" className="btn-submit">
+                  Submit Feedback
+                </button>
+                <button type="reset" className="btn-clear">
+                  Clear
+                </button>
+              </div>
+
+              {formSubmitted && (
+                <div className="success-message">
+                  ✓ Thank you! We appreciate your feedback.
+                </div>
+              )}
+            </form>
+          </div>
+
+          {/* Contact Information Card */}
+          <div className="cs-contact-card">
+            <h2>Contact Us</h2>
+            <div className="contact-item">
+              <FaEnvelope className="contact-icon" />
+              <div>
+                <h4>Email</h4>
+                <p>
+                  <a href="mailto:dineshiairlines@gmail.com">
+                    dineshiairlines@gmail.com
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <FaPhone className="contact-icon" />
+              <div>
+                <h4>Phone</h4>
+                <p>
+                  <a href="tel:+919677934637">+91 9677934637</a>
+                </p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <FaMapMarkerAlt className="contact-icon" />
+              <div>
+                <h4>Address</h4>
+                <p>91-Z/19, Delhi, 110001</p>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <FaEnvelope className="contact-icon" />
+              <div>
+                <h4>Report an Issue</h4>
+                <a href="mailto:dineshrvd1403@gmail.com" className="report-link">
+                  → Send Report Email
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
