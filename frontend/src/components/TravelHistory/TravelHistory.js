@@ -115,27 +115,19 @@ export default class App extends React.Component {
             <div>
               <p> TRAVEL HISTORY DETAILS </p>{" "}
               <div className="row">
-                <button
+                {/* <button
                   style={{ marginRight: 40 }}
                   onClick={(e) => this.moveToupcomingpage(e)}
                   className="btn btn-light btCustoms"
                 >
                   Upcoming Flights{" "}
-                </button>{" "}
+                </button>{" "} */}
                 &nbsp;&nbsp;
-                <button
-                  style={{ marginRight: 40 }}
-                  onClick={(e) => this.moveToCompletedpage(e)}
-                  className="btn btn-light btCustoms"
-                >
+                <button style={{ marginRight: 40 }} onClick={(e) => this.moveToCompletedpage(e)} className="btn btn-light">
                   Completed Trips{" "}
                 </button>{" "}
                 &nbsp;&nbsp;
-                <button
-                  style={{ marginRight: 40 }}
-                  onClick={(e) => this.moveToCancelPage(e)}
-                  className="btn btn-light btCustoms"
-                >
+                <button style={{ marginRight: 40 }} onClick={(e) => this.moveToCancelPage(e)} className="btn btn-light">
                   Cancelled Flights{" "}
                 </button>{" "}
               </div>{" "}

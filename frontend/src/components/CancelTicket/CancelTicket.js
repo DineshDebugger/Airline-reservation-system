@@ -2,6 +2,7 @@ import React from "react";
 
 import "./cancelticket.css";
 import jwt_decode from "jwt-decode";
+import useBookingStore from "../../stores/BookingStore";
 
 export default class App extends React.Component {
   state = {
@@ -94,6 +95,8 @@ export default class App extends React.Component {
   render() {
     const { name, number, expiry, cvc, focused, issuer, formData, token } = this.state;
 
+    const { date, startCity, destination } = useBookingStore.getState();
+
     return (
       <div className="canc">
         <div className="row">
@@ -106,24 +109,18 @@ export default class App extends React.Component {
                   <hr className="hr3" />
                   <p className="hdng"> Date </p> <p className="hdng"> From </p>
                   <p className="hdng"> To </p> <hr className="hr3" />
-                  <p className="hdng"> Passengers </p> {this.renderNamesOfPassenger()}{" "}
-                  <hr className="hr3" />
-                  <p className="hdng"> Ticket price </p> <p className="hdng"> Tax </p>{" "}
-                  <p className="hdng"> Toal Sum </p>{" "}
+                  <p className="hdng"> Passengers </p> {this.renderNamesOfPassenger()} <hr className="hr3" />
+                  <p className="hdng"> Ticket price </p> <p className="hdng"> Tax </p> <p className="hdng"> Toal Sum </p>{" "}
                 </div>{" "}
                 <div className="col-6">
                   <hr className="hr3" />
-                  <p className="usrName"> {localStorage.getItem("date")} </p>{" "}
-                  <p className="usrName"> {localStorage.getItem("start")} </p>{" "}
-                  <p className="usrName"> {localStorage.getItem("destination")} </p>{" "}
-                  <hr className="hr3" />
+                  <p className="usrName">{date}</p>
+                  <p className="usrName">{startCity}</p>
+                  <p className="usrName">{destination}</p> <hr className="hr3" />
                   <p className="hdng">Seat No </p> {this.renderSeatNumbers()}
                   <p> {this.getSumTotal()} </p>
                 </div>{" "}
-                <button
-                  onClick={(e) => this.moveToCancelPage(e)}
-                  className="btn btn-light btCustoms"
-                >
+                <button onClick={(e) => this.moveToCancelPage(e)} className="btn btn-light btCustoms">
                   CANCEL TICKET{" "}
                 </button>{" "}
               </div>{" "}

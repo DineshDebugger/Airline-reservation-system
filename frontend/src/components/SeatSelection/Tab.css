@@ -178,14 +178,14 @@ ol {
 
 .column1 {
     float: left;
-    width: 40%;
+    width: 45%;
+    padding: 0 20px;
 }
 
 .column2 {
     float: left;
-    width: 55%;
-    padding: 0;
-    margin: 0;
+    width: 50%;
+    padding: 0 20px;
 }
 
 /* Clear floats after the columns */
@@ -204,30 +204,88 @@ ol {
 }
 
 .seatInfo {
-    /* position: relative;  */
-    left:-50px;
-    margin-top:49px;
-    border: 1px solid white;
+    margin-top: 20px;
+    border: 1px solid #e0e0e0;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .seatfrm{
-    border:1px solid white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
 .seatInp{
-    margin-right:-8px;
-    width:50%;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.seatInp:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
 .form-check{
-    margin-left: 32px;
-    margin-top:5px;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.form-check-input {
+    margin-right: 5px;
+    width: 16px !important;
+    height: 16px !important;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.form-check-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
 .seatBT{
-    display:block;
-    margin-left:36%;
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.seatBT:hover {
+    background-color: #0056b3;
 }
 
 .hideBT{
@@ -237,8 +295,8 @@ ol {
 .activeArrow2 {
     color: rgb(0, 63, 0);
     position: absolute;
-    margin-top:50px;
-    left: 370px;
+    margin-top: 68px;
+    left: 401px;
     animation: bounce 0.5s infinite linear;
 }
 
@@ -316,3 +374,4 @@ ol {
         top: 0;
     }
 }
+

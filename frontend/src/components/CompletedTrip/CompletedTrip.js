@@ -67,6 +67,11 @@ export default class App extends React.Component {
         localStorage.setItem('paymentData', JSON.stringify(this.state.token))
         window.location.href = '/upcomingPage'
     }
+
+    handleBackButton = e => {
+        e.preventDefault()
+        window.history.back()
+    }
     
     renderNamesOfPassenger = () => {
         let passArray = localStorage.getItem('nameData')
@@ -118,7 +123,23 @@ export default class App extends React.Component {
 
         return (
         
-        <div  >
+        <div>
+            <button 
+                onClick={this.handleBackButton}
+                style={{
+                    padding: '10px 20px',
+                    marginBottom: '20px',
+                    background: '#1a73e8',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    fontSize: '16px',
+                    fontWeight: 'bold'
+                }}
+            >
+                ← Back
+            </button>
             <p style={{display: 'flex',  justifyContent:'center', alignItems:'center',fontSize:40}}> Completed Trips </p>{' '}
             <div className='row' >
                 
