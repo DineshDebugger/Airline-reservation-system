@@ -1,231 +1,664 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
-* {
-  margin: 0;
-  padding: 0;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+:root {
+  --navy: #0a1628;
+  --deep: #0d1f3c;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --sky: #4aa8d8;
+  --white: #f5f3ef;
+  --muted: rgba(245, 243, 239, 0.45);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(201, 168, 76, 0.2);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: var(--navy);
+  overflow: hidden;
 }
 
 a,
-a:hover {
+a:hover,
+a:focus {
   text-decoration: none;
 }
 
-.myform-area {
+.skyline-login {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  padding: 60px 0;
-  /* background-image: url('../../bg.jpg'); */
-  position: relative;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
-.myform-area .form-area {
-  position: relative;
-  background: rgba(103, 58, 183, 0.7);
-  width: 700px;
-  height: 400px;
-  overflow: hidden;
-  box-shadow: 0 0 40px 0 #0a0a0a;
+.skyline-login .sky-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(160deg, #020b18 0%, #0a1f3a 30%, #0d2d50 55%, #1a3a5c 75%, #0a1628 100%);
 }
 
-.myform-area .form-area .form-content,
-.myform-area .form-area .form-input {
-  position: relative;
-  width: 50%;
-  height: 100%;
-  float: left;
-  box-sizing: border-box;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0a1628 inset !important;
+  -webkit-text-fill-color: #f5f3ef !important;
+  caret-color: #c9a84c !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
-.myform-area .form-area .form-content {
-  width: 50%;
-  padding: 40px 30px;
+.skyline-login .stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 8%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 15%, rgba(201, 168, 76, 0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 5%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 25%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 45%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 28% 55%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 40%, rgba(201, 168, 76, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 82% 50%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 65%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 5% 70%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 75%, rgba(201, 168, 76, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 65%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 22% 85%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 90%, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
 }
 
-.myform-area .form-area .form-content h2 {
-  color: #fff;
-}
-
-.myform-area .form-area .form-content p {
-  color: #fff;
-}
-
-.myform-area .form-area .form-content ul {
-  margin-top: 50px;
-}
-
-.myform-area .form-area .form-content ul li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.myform-area .form-area .form-content a i {
-  margin-right: 10px;
-}
-
-.myform-area .form-area .form-content .facebook {
-  display: block;
-  position: relative;
-  top: -39px;
-  padding: 8px 140px;
-  background: #3b579d;
-  color: #fff;
-  font-size: 15px;
-  /* text-transform: capitalize; */
-  border-radius: 4px;
-  border: 1px solid #3b579d;
-  transition: all 0.5s;
-}
-
-.myform-area .form-area .form-content .facebook:hover,
-.myform-area .form-area .form-content .facebook:focus {
-  background: transparent;
-}
-
-.myform-area .form-area .form-content .twitter {
-  display: block;
-  position: relative;
-  top: -48px;
-  padding: 8px 140px;
-  background: #00aced;
-  color: #fff;
-  font-size: 15px;
-  /* text-transform: capitalize; */
-  border-radius: 4px;
-  border: 1px solid #00aced;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.myform-area .form-area .form-content .twitter:hover,
-.myform-area .form-area .form-content .twitter:focus {
-  background: transparent;
-}
-
-.myform-area .form-area .form-input {
-  background-color: white;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 40px 0 #e1e1e1;
-}
-
-.myform-area .form-area .form-input {
-  width: 50%;
-  background: #fff;
-  padding: 40px 30px;
-}
-
-.myform-area .form-area .form-input h2 {
-  margin-bottom: 20px;
-  color: #07315b;
-}
-
-.myform-area .form-area .form-input input {
-  position: relative;
-  height: 60px;
-  padding: 20px 0;
-}
-
-.myform-area .form-area .form-input textarea {
-  height: 120px;
-  padding: 20px 0;
-}
-
-.myform-area .form-area .form-input input,
-.myform-area .form-area .form-input textarea {
-  /* text-transform: capitalize; */
-  width: 100%;
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  border-bottom: 2px solid #e1e1e1;
-  color: #07315b;
-}
-
-.myform-area .form-area .form-input form .form-group {
-  position: relative;
-}
-
-.myform-area .form-area .form-input form .form-group label {
-  position: absolute;
-  /* text-transform: capitalize; */
-  top: 20px;
+.skyline-login .horizon {
+  position: fixed;
+  bottom: 0;
   left: 0;
+  right: 0;
+  z-index: 2;
+  height: 35vh;
+  background: linear-gradient(to top, rgba(74, 168, 216, 0.12) 0%, rgba(10, 30, 60, 0.05) 60%, transparent 100%);
+}
+
+.skyline-login .clouds {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
   pointer-events: none;
-  font-size: 14px;
-  color: #595959;
-  margin-bottom: 0;
-  transition: all 0.6s;
+  overflow: hidden;
 }
 
-.myform-area .form-area .form-input input:focus ~ label,
-.myform-area .form-area .form-input textarea:focus ~ label,
-.myform-area .form-area .form-input input:valid ~ label,
-.myform-area .form-area .form-input textarea:valid ~ label {
-  top: -5px;
-  opacity: 0;
+.skyline-login .cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.07;
+  animation: drift linear infinite;
+}
+
+.skyline-login .cloud-1 {
+  width: 400px;
+  height: 120px;
+  background: var(--sky);
+  bottom: 20%;
+  left: -200px;
+  animation-duration: 40s;
+}
+
+.skyline-login .cloud-2 {
+  width: 300px;
+  height: 80px;
+  background: var(--gold);
+  bottom: 30%;
+  right: -150px;
+  animation-duration: 55s;
+  animation-direction: reverse;
+  opacity: 0.04;
+}
+
+.skyline-login .cloud-3 {
+  width: 500px;
+  height: 100px;
+  background: var(--sky);
+  bottom: 10%;
+  left: -100px;
+  animation-duration: 70s;
+  opacity: 0.05;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(110vw);
+  }
+}
+
+.skyline-login .flight-path {
+  position: fixed;
+  z-index: 3;
+  top: 0;
   left: 0;
-  color: rgba(103, 58, 183);
-  font-size: 12px;
-  color: #07315b;
-  font-weight: bold;
-}
-
-.myform-area .form-area .form-input input:focus,
-.myform-area .form-area .form-input textarea:focus,
-.myform-area .form-area .form-input input:valid,
-.myform-area .form-area .form-input textarea:valid {
-  border-bottom: 2px solid rgba(103, 58, 183);
-}
-
-.myform-area .form-area .form-text {
-  margin-top: 30px;
-}
-
-.myform-area .form-area .form-text span a {
-  color: rgba(103, 58, 183);
-}
-
-.myform-area .form-area .myform-button {
-  margin-top: 30px;
-}
-
-.myform-area .form-area .myform-button .myform-btn {
   width: 100%;
-  height: 50px;
-  font-size: 17px;
-  background: rgba(103, 58, 183);
-  border: none;
-  border-radius: 50px;
-  color: #fff;
-  outline: none;
-  cursor: pointer;
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.myform-area .form-area .myform-button .myform-btn:hover {
-  background: #07315b;
+.skyline-login .flight-path svg {
+  width: 100%;
+  height: 100%;
 }
 
-.signup-text {
-  padding-bottom: 5px;
-  padding-left: 18%;
+.skyline-login .path-line {
+  stroke: var(--gold);
+  stroke-width: 0.5;
+  fill: none;
+  stroke-dasharray: 8 6;
+  opacity: 0.2;
+  animation: dashMove 4s linear infinite;
 }
-.signUPtext {
-  color: green;
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+.skyline-login .plane-decor {
+  position: fixed;
+  z-index: 3;
+  top: 18%;
+  right: 12%;
+  opacity: 0.18;
+  animation: float 8s ease-in-out infinite;
+}
+
+.skyline-login .plane-decor svg {
+  width: 120px;
+  height: 120px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-15deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-12deg);
+  }
+}
+
+.skyline-login .card-wrap {
   position: relative;
-  left: 50%;
-  top: -27px;
-  padding-right: 10px;
+  z-index: 10;
+  display: flex;
+  width: min(900px, 96vw);
+  min-height: 560px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px var(--glass-border),
+    0 40px 100px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(201, 168, 76, 0.06);
+  animation: cardReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.skyline-login .panel-left {
+  flex: 1.1;
+  background: linear-gradient(145deg, rgba(201, 168, 76, 0.08) 0%, rgba(13, 31, 60, 0.95) 40%, rgba(10, 22, 40, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-border);
+  padding: 52px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.skyline-login .panel-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.skyline-login .panel-left::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.skyline-login .brand {
+  animation: fadeUp 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .brand-tag {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skyline-login .brand-tag::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.skyline-login .brand-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 46px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.skyline-login .brand-name span {
+  color: var(--gold);
+}
+
+.skyline-login .tagline {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 8px;
+}
+
+.skyline-login .left-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeUp 0.8s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.skyline-login .feature-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.skyline-login .feature-text {
+  flex: 1;
+}
+
+.skyline-login .feature-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.skyline-login .feature-desc {
+  font-size: 10.5px;
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.skyline-login .left-footer {
+  font-size: 10px;
+  color: rgba(245, 243, 239, 0.2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .panel-right {
+  flex: 1;
+  background: rgba(245, 243, 239, 0.03);
+  backdrop-filter: blur(30px);
+  padding: 52px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+
+.skyline-login .panel-right::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(74, 168, 216, 0.4), transparent);
+}
+
+.skyline-login .form-heading {
+  margin-bottom: 36px;
+  animation: fadeUp 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .form-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+
+.skyline-login .form-subtitle {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 6px;
+}
+
+.skyline-login .field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .field {
+  position: relative;
+}
+
+.skyline-login .field-label {
+  font-size: 9.5px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: block;
+  transition: color 0.3s;
+}
+
+.skyline-login .field-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(245, 243, 239, 0.15);
+  padding: 10px 0;
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  outline: none;
+  transition: border-color 0.3s;
+  caret-color: var(--gold);
+}
+
+.skyline-login .field-input::placeholder {
+  color: rgba(245, 243, 239, 0.2);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.skyline-login .field-input:focus {
+  border-bottom-color: var(--gold);
+}
+
+.skyline-login .field-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--sky));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skyline-login .field-input:focus + .field-line {
+  transform: scaleX(1);
+}
+
+.skyline-login .options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  animation: fadeUp 0.8s 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
 }
 
-.signUPtext:hover {
-  color: rgb(71, 158, 71);
+.skyline-login .remember input {
+  display: none;
 }
 
-.loginInfo {
-  margin-left: 5px;
+.skyline-login .check-box {
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.skyline-login .remember input:checked ~ .check-box {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.skyline-login .remember input:checked ~ .check-box::after {
+  content: "✓";
+  font-size: 9px;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.skyline-login .remember-text {
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+.skyline-login .forgot-link {
+  font-size: 10.5px;
+  color: var(--sky);
+  letter-spacing: 0.5px;
+}
+
+.skyline-login .forgot-link:hover {
+  color: var(--gold-light);
+}
+
+.skyline-login .btn-login {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--gold) 0%, #a8782e 100%);
+  border: none;
+  color: var(--navy);
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.3s;
+  animation: fadeUp 0.8s 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(201, 168, 76, 0.3);
+}
+
+.skyline-login .btn-login span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.skyline-login .divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 24px 0;
+  animation: fadeUp 0.8s 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(245, 243, 239, 0.08);
+}
+
+.skyline-login .divider-text {
+  font-size: 10px;
+  color: rgba(245, 243, 239, 0.2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.skyline-login .social-row {
+  display: flex;
+  gap: 12px;
+  animation: fadeUp 0.8s 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.skyline-login .btn-social {
+  flex: 1;
+  padding: 11px;
+  background: transparent;
+  border: 1px solid rgba(245, 243, 239, 0.1);
+  color: var(--muted);
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s;
+}
+
+.skyline-login .btn-social:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+  color: var(--gold-light);
+  background: rgba(201, 168, 76, 0.04);
+}
+
+.skyline-login .btn-social svg {
+  width: 14px;
+  height: 14px;
+}
+
+.skyline-login .signup-prompt {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(245, 243, 239, 0.25);
+  letter-spacing: 0.3px;
+}
+
+.skyline-login .signup-prompt a {
+  color: var(--sky);
+}
+
+.skyline-login .signup-prompt a:hover {
+  color: var(--gold-light);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .skyline-login .card-wrap {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .skyline-login .panel-left {
+    display: none;
+  }
+  .skyline-login .panel-right {
+    padding: 40px 28px;
+  }
+  .skyline-login .card-wrap {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+  }
 }
