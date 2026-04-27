@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function logUserIn(userCredentials) {
-    let apiUrl = '${process.env.REACT_APP_API_URL}/login'
+    let apiUrl = `${process.env.REACT_APP_API_URL}/login`
     return axios.post(apiUrl,userCredentials, {
         headers: {
             'Content-Type': 'application/json'
