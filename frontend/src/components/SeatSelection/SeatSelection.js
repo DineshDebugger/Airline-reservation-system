@@ -16,7 +16,7 @@ export default function SeatSelection({ onSeatSelectionComplete }) {
     //     else return
     // },[localStorage])
     // const getSeatArray = async bId => {
-    //     const baseURL = "http://localhost:8080/booking/"
+    //     const baseURL = "${process.env.REACT_APP_API_URL}/booking/"
     //     await axios.get(baseURL, bId)
     //     .this(response=>response.data)
     //     .this(data=>{
