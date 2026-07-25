@@ -81,11 +81,10 @@ export default function LogOrsign({ history }) {
       <div className="card-wrap">
         <div className="panel-left">
           <div className="brand">
-            <div className="brand-tag">Airline Reservation System</div>
+            {/* <div className="brand-tag">Airline Reservation System</div> */}
             <div className="brand-name">
-              Sky<span>Line</span>
+              Dinesh <span>SkyLines</span>
               <br />
-              Air
             </div>
             <div className="tagline">Elevating every journey</div>
           </div>
@@ -129,7 +128,7 @@ export default function LogOrsign({ history }) {
             </div>
           </div>
 
-          <div className="left-footer">© 2025 SkyLine Air · All rights reserved</div>
+          <div className="left-footer">© 2025 Dinesh SkyLines · All rights reserved</div>
         </div>
 
         <div className="panel-right">
