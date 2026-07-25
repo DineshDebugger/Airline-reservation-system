@@ -55,56 +55,82 @@ export default class App extends React.Component {
 
   renderNamesOfPassenger = () => {
     let passArray = localStorage.getItem("nameData");
-    if (passArray) {
-      let nameArray = JSON.parse(passArray);
-      return nameArray.map((name, idx) => {
-        return <p key={idx}> {name} </p>;
-      });
+    if (!passArray) return null;
+
+    let nameArray;
+    try {
+      nameArray = JSON.parse(passArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(nameArray)) return null;
+
+    return nameArray.map((name, idx) => {
+      return <p key={idx}> {name} </p>;
+    });
   };
 
   renderSeatNumbers = () => {
     let seatArray = localStorage.getItem("reservedSeats");
-    if (seatArray) {
-      let seaArr = JSON.parse(seatArray);
-      return seaArr.map((seat, idx) => {
-        return <p key={idx}> {seat} </p>;
-      });
+    if (!seatArray) return null;
+
+    let seaArr;
+    try {
+      seaArr = JSON.parse(seatArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(seaArr)) return null;
+
+    return seaArr.map((seat, idx) => {
+      return <p key={idx}> {seat} </p>;
+    });
   };
 
   getSumTotal = () => {
-    let count = 0;
     let tax = 150;
     let seatArray = localStorage.getItem("reservedSeats");
-    if (seatArray) {
-      let seaArr = JSON.parse(seatArray);
-      for (let i = 0; i < seaArr.length; i++) {
-        count++;
-      }
-      return (
-        <div>
-          <hr className="hr3" />
-          <p> {1000 * count} </p> <p> +{tax} </p> <p> {1000 * count + tax} </p>{" "}
-        </div>
-      );
+    if (!seatArray) return null;
+
+    let seaArr;
+    try {
+      seaArr = JSON.parse(seatArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(seaArr)) return null;
+
+    const count = seaArr.length;
+    return (
+      <div>
+        <hr className="hr3" />
+        <p> {1000 * count} </p> <p> +{tax} </p> <p> {1000 * count + tax} </p>{" "}
+      </div>
+    );
   };
 
   render() {
     const { name, number, expiry, cvc, focused, issuer, formData, token } = this.state;
 
     return (
-      <div>
-        <div className="row">
+      <div className="cancelled-page">
+        <div className="return-button-container">
+          <button
+            className="btn btn-primary"
+            onClick={() => (window.location.href = "/routes")}
+          >
+            Return to Booking
+          </button>
+        </div>
+        <div className="cancelled-content-wrapper">
           <div className="columnThree">
-            <h3> Dinesh AIRLINES </h3>{" "}
+            <h3> Dinesh AIRLINES </h3>
             <div>
-              <p> Cancelled TICKET DETAILS </p>{" "}
-              <div
-                className="row"
-                style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-              >
+              <p> Cancelled TICKET DETAILS </p>
+              <div className="cancelled-grid">
                 <div className="col-6 pt">
                   <hr className="hr3" />
                   <p className="hdng"> Date </p> <p className="hdng"> From </p>

@@ -2,6 +2,23 @@
     cursor: pointer;
 }
 
+.route-selection-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+}
+
+.route-selection-page .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  width: 100%;
+}
+
 .routePicker {
     padding: 30px 18px;
 }

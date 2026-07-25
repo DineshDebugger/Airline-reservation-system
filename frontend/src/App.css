@@ -1,3 +1,11 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body {
   background: url("./status.jpg");
   /* background-image: url("../src/assets/flight1.jpg"); */
@@ -5,8 +13,9 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
+  margin: 0;
 }
 
 .hero-banner {

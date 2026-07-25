@@ -25,7 +25,17 @@ export default function TicketPage({ history }) {
   };
   const getPassengerName = () => {
     let nameArray = localStorage.getItem("nameData");
-    let names = JSON.parse(nameArray);
+    if (!nameArray) return null;
+
+    let names;
+    try {
+      names = JSON.parse(nameArray);
+    } catch {
+      return null;
+    }
+
+    if (!Array.isArray(names)) return null;
+
     return names.map((name, idx) => {
       return (
         <div key={idx}>
@@ -36,11 +46,21 @@ export default function TicketPage({ history }) {
   };
   const getSeatNumbers = () => {
     let noArray = localStorage.getItem("reservedSeats");
-    let arr = JSON.parse(noArray);
+    if (!noArray) return null;
+
+    let arr;
+    try {
+      arr = JSON.parse(noArray);
+    } catch {
+      return null;
+    }
+
+    if (!Array.isArray(arr)) return null;
+
     return arr.map((element, idx) => {
       return (
         <div key={idx}>
-          <p classsName="seatNo">{element}</p>
+          <p className="seatNo">{element}</p>
         </div>
       );
     });

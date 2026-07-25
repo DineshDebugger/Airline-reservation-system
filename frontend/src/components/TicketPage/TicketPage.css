@@ -1,8 +1,9 @@
 .tpMain {
     width: 100%;
-    padding: 2px 100px;
-    height: 500px;
-    margin-left: 220px;
+    max-width: 760px;
+    padding: 40px 24px 24px;
+    margin: 0 auto 0;
+    height: auto;
 }
 
 *, *::after {
@@ -12,8 +13,9 @@
 
 body {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 50px;
     min-height: 100vh;
     color: #454f54;
     background-color: #f4f5f6;
@@ -112,6 +114,7 @@ body {
 .ticket__section>h3 {
     font-size: 1.125rem;
     margin-bottom: 0.5rem;
+    color: #1f2937;
 }
 
 .ticket__header {
