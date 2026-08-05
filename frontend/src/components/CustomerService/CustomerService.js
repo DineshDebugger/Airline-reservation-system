@@ -143,8 +143,8 @@ export default class CustomerService extends React.Component {
               <div>
                 <h4>Email</h4>
                 <p>
-                  <a href="mailto:dineshiairlines@gmail.com">
-                    dineshiairlines@gmail.com
+                  <a href="mailto:dineshairlines@gmail.com">
+                    dineshairlines@gmail.com
                   </a>
                 </p>
               </div>

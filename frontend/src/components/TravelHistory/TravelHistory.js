@@ -68,22 +68,38 @@ export default class App extends React.Component {
 
   renderNamesOfPassenger = () => {
     let passArray = localStorage.getItem("nameData");
-    if (passArray) {
-      let nameArray = JSON.parse(passArray);
-      return nameArray.map((name, idx) => {
-        return <p key={idx}> {name} </p>;
-      });
+    if (!passArray) return null;
+
+    let nameArray;
+    try {
+      nameArray = JSON.parse(passArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(nameArray)) return null;
+
+    return nameArray.map((name, idx) => {
+      return <p key={idx}> {name} </p>;
+    });
   };
 
   renderSeatNumbers = () => {
     let seatArray = localStorage.getItem("reservedSeats");
-    if (seatArray) {
-      let seaArr = JSON.parse(seatArray);
-      return seaArr.map((seat, idx) => {
-        return <p key={idx}> {seat} </p>;
-      });
+    if (!seatArray) return null;
+
+    let seaArr;
+    try {
+      seaArr = JSON.parse(seatArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(seaArr)) return null;
+
+    return seaArr.map((seat, idx) => {
+      return <p key={idx}> {seat} </p>;
+    });
   };
 
   getSumTotal = () => {

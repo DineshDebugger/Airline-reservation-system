@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
+import "./RouteSelection.css";
 import RouteSelector from "../routeSelector/Routeselector";
 import SeatSelection from "../SeatSelection/SeatSelection";
 import PaymentTab from "../PaymentTab/PaymentTab";
@@ -67,7 +68,7 @@ export default function RouteSelection({ history }) {
   };
 
   return (
-    <div className="container">
+    <div className="container route-selection-page">
       <div>
         <nav className="mb-4 navbar navbar-expand-lg navbar-dark bg-unique hm-gradient">
           <a href="/#" className="navbar-brand Company-Log" onClick={(e) => handleLogoClick(e)}>

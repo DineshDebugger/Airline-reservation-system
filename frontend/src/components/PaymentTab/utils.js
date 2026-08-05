@@ -11,26 +11,28 @@ export function formatCreditCardNumber(value) {
 
     const issuer = Payment.fns.cardType(value);
     const clearValue = clearNumber(value);
+    const maxLength = issuer === "amex" ? 15 : issuer === "dinersclub" ? 14 : 16;
+    const limitedValue = clearValue.slice(0, maxLength);
     let nextValue;
 
     switch (issuer) {
         case "amex":
-            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+            nextValue = `${limitedValue.slice(0, 4)} ${limitedValue.slice(
                 4,
                 10
-            )} ${clearValue.slice(10, 15)}`;
+            )} ${limitedValue.slice(10, 15)}`;
             break;
         case "dinersclub":
-            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+            nextValue = `${limitedValue.slice(0, 4)} ${limitedValue.slice(
                 4,
                 10
-            )} ${clearValue.slice(10, 14)}`;
+            )} ${limitedValue.slice(10, 14)}`;
             break;
         default:
-            nextValue = `${clearValue.slice(0, 4)} ${clearValue.slice(
+            nextValue = `${limitedValue.slice(0, 4)} ${limitedValue.slice(
                 4,
                 8
-            )} ${clearValue.slice(8, 12)} ${clearValue.slice(12, 19)}`;
+            )} ${limitedValue.slice(8, 12)} ${limitedValue.slice(12, 16)}`;
             break;
     }
 
@@ -39,13 +41,7 @@ export function formatCreditCardNumber(value) {
 
 export function formatCVC(value, prevValue, allValues = {}) {
     const clearValue = clearNumber(value);
-    let maxLength = 4;
-
-    if (allValues.number) {
-        const issuer = Payment.fns.cardType(allValues.number);
-        maxLength = issuer === "amex" ? 4 : 3;
-    }
-
+    const maxLength = 3;
     return clearValue.slice(0, maxLength);
 }
 

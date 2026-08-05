@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import "./Tab.css";
 export default function SeatSelection({ onSeatSelectionComplete }) {
-  const [name, setName] = useState([]);
+  const [passengerNames, setPassengerNames] = useState({});
   const [arrowDown, setArrowDown] = useState(false);
   const [gender, setGender] = useState([]);
   const [reservedSeat, setReservedSeat] = useState(["1A", "2A", "2B", "3B", "4A", "5C", "6A", "7B", "7C", "8B", "9B", "9C"]);
   const [seatNumber, setSeatnumber] = useState([]);
+  const [nameError, setNameError] = useState("");
   const getSeatNumber = (e) => {
     renderPassengerData(seatNumber);
     let newSeat = e.target.value;
@@ -28,22 +29,35 @@ export default function SeatSelection({ onSeatSelectionComplete }) {
     // setPassengers(prevState => ({ ...prevState, SeatNo: seatNo, Gender: value }))
   };
   const handlePassengerName = (e, seatNo) => {
-    e.preventDefault();
-    let value = e.target.value;
-    // console.log(value)
-    if (!value) {
-      return setName("name is required");
-    } else {
-      setName(name.concat(value));
-      // setPassengers(prevState => ({ ...prevState, SeatNo: seatNo, Name: value }))
+    const value = e.target.value;
+    const trimmedValue = value.trim();
+
+    setPassengerNames((currentNames) => ({
+      ...currentNames,
+      [seatNo]: value,
+    }));
+
+    if (!trimmedValue) {
+      setNameError("Please enter a passenger name.");
+      return;
     }
+
+    setNameError("");
   };
   const handleSubmitDetails = (e) => {
     e.preventDefault();
+    const nameList = seatNumber.map((seat) => (passengerNames[seat] || "").trim());
+    const validNames = nameList.filter((n) => n.length > 0);
+    if (seatNumber.length > 0 && validNames.length < seatNumber.length) {
+      setNameError("Please complete all passenger names before confirming.");
+      return;
+    }
+
+    setNameError("");
     setArrowDown(true);
     localStorage.setItem("reservedSeats", JSON.stringify(seatNumber));
-    localStorage.setItem("nameData", JSON.stringify(name));
-    console.log(name);
+    localStorage.setItem("nameData", JSON.stringify(nameList));
+    console.log(nameList);
     console.log(gender);
     // Call the seat selection completion callback
     if (onSeatSelectionComplete) {
@@ -62,12 +76,18 @@ export default function SeatSelection({ onSeatSelectionComplete }) {
             <input
               style={{ marginLeft: "8px" }}
               className="form-control seatInp"
-              onBlur={(e) => handlePassengerName(e, seat)}
+              value={passengerNames[seat] || ""}
+              onChange={(e) => handlePassengerName(e, seat)}
               type="text"
               name="passenger-name"
               placeholder="Enter Passenger Name"
               required
             />
+            {nameError && (
+              <div className="text-danger" style={{ marginTop: "8px", fontSize: "0.9rem" }}>
+                {nameError}
+              </div>
+            )}
           </div>
           <div className="mb-3">
             <div style={{ fontWeight: "bold", color: "#555", marginBottom: "10px", textAlign: "center" }}>Gender:</div>
@@ -80,12 +100,12 @@ export default function SeatSelection({ onSeatSelectionComplete }) {
                   id={`male-${seat}`}
                   value="Male"
                   onClick={(e) => handleGender(e, seat)}
-                  style={{ width: "16px", height: "16px", marginRight: "8px" }}
+                  style={{ width: "16px", height: "16px" }}
                 />
                 <label
                   className="form-check-label"
                   htmlFor={`male-${seat}`}
-                  style={{ marginTop: "31px", fontSize: "14px", color: "#333", cursor: "pointer", fontWeight: "500" }}
+                  style={{ fontSize: "14px", color: "#333", cursor: "pointer", fontWeight: "500" }}
                 >
                   Male
                 </label>
@@ -98,12 +118,12 @@ export default function SeatSelection({ onSeatSelectionComplete }) {
                   id={`female-${seat}`}
                   value="Female"
                   onClick={(e) => handleGender(e, seat)}
-                  style={{ width: "16px", height: "16px", marginRight: "8px" }}
+                  style={{ width: "16px", height: "16px" }}
                 />
                 <label
                   className="form-check-label"
                   htmlFor={`female-${seat}`}
-                  style={{ marginTop: "31px", fontSize: "14px", color: "#333", cursor: "pointer", fontWeight: "500" }}
+                  style={{ fontSize: "14px", color: "#333", cursor: "pointer", fontWeight: "500" }}
                 >
                   Female
                 </label>

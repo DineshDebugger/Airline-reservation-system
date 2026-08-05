@@ -76,40 +76,61 @@ export default class App extends React.Component {
 
   renderNamesOfPassenger = () => {
     let passArray = localStorage.getItem("nameData");
-    if (passArray) {
-      let nameArray = JSON.parse(passArray);
-      return nameArray.map((name, idx) => {
-        return <p key={idx}> {name} </p>;
-      });
+    if (!passArray) return null;
+
+    let nameArray;
+    try {
+      nameArray = JSON.parse(passArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(nameArray)) return null;
+
+    return nameArray.map((name, idx) => {
+      return <p key={idx}> {name} </p>;
+    });
   };
 
   renderSeatNumbers = () => {
     let seatArray = localStorage.getItem("reservedSeats");
-    if (seatArray) {
-      let seaArr = JSON.parse(seatArray);
-      return seaArr.map((seat, idx) => {
-        return <p key={idx}> {seat} </p>;
-      });
+    if (!seatArray) return null;
+
+    let seaArr;
+    try {
+      seaArr = JSON.parse(seatArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(seaArr)) return null;
+
+    return seaArr.map((seat, idx) => {
+      return <p key={idx}> {seat} </p>;
+    });
   };
 
   getSumTotal = () => {
-    let count = 0;
     let tax = 150;
     let seatArray = localStorage.getItem("reservedSeats");
-    if (seatArray) {
-      let seaArr = JSON.parse(seatArray);
-      for (let i = 0; i < seaArr.length; i++) {
-        count++;
-      }
-      return (
-        <div>
-          <hr className="hr3" />
-          <p> {1000 * count} </p> <p> +{tax} </p> <p> {1000 * count + tax} </p>{" "}
-        </div>
-      );
+    if (!seatArray) return null;
+
+    let seaArr;
+    try {
+      seaArr = JSON.parse(seatArray);
+    } catch {
+      return null;
     }
+
+    if (!Array.isArray(seaArr)) return null;
+
+    const count = seaArr.length;
+    return (
+      <div>
+        <hr className="hr3" />
+        <p> {1000 * count} </p> <p> +{tax} </p> <p> {1000 * count + tax} </p>{" "}
+      </div>
+    );
   };
 
   render() {
@@ -140,7 +161,8 @@ export default class App extends React.Component {
                     name="number"
                     className="frm-ctrl"
                     placeholder="Card Number"
-                    pattern="[\d| ]{16,22}"
+                    maxLength={19}
+                    pattern="[\d ]{16,19}"
                     required
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}
@@ -175,7 +197,8 @@ export default class App extends React.Component {
                     name="cvc"
                     className="frm-ctrl cvc"
                     placeholder="CVC"
-                    pattern="\d{3,4}"
+                    maxLength={3}
+                    pattern="\d{3}"
                     required
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}

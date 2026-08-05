@@ -237,20 +237,79 @@ ol {
     box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
 }
 
-.form-check{
-    display: inline-block;
-    margin-right: 15px;
-    margin-top: 5px;
+.seatfrm .form-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 16px;
+    margin-top: 0;
+    padding-left: 0 !important;
+    vertical-align: middle;
 }
 
-.form-check-input {
-    margin-right: 5px;
+.seatfrm .form-check-input {
+    position: absolute !important;
+    opacity: 0 !important;
     width: 16px !important;
     height: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+}
+
+.seatfrm .form-check-label {
+    margin: 0 !important;
+    margin-left: 0 !important;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    padding: 8px 18px 8px 40px;
+    border: 1px solid #007bff;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #333;
+    min-width: 80px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.seatfrm .form-check-label::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
     border: 2px solid #007bff;
     border-radius: 50%;
-    background-color: white;
-    cursor: pointer;
+    background: #ffffff;
+}
+
+.seatfrm .form-check-input:checked + .form-check-label {
+    background: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.seatfrm .form-check-input:checked + .form-check-label::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.seatfrm .form-check-input:focus + .form-check-label {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
 }
 
 .form-check-input:checked {
@@ -269,6 +328,9 @@ ol {
     cursor: pointer;
     font-weight: 500;
     margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.4;
 }
 
 .seatBT{
